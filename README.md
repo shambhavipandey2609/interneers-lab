@@ -370,9 +370,24 @@ Send the request. You should see a JSON response:
 
 #### Congratulations! you wrote your first own API. 
 
----
+#### Bonus: Customize the greeting
+By default, the API greets with "Hello," but you can modify it to accept a custom greeting.
+def hello_name(request):
+    name = request.GET.get("name", "World")
+    greeting = request.GET.get("greeting", "Hello")  # Custom greeting
+    return JsonResponse({"message": f"{greeting}, {name}!"})
 
-### Pushing Your First Change
+Now you can call the API like this:
+http://127.0.0.1:8001/hello/?name=Bob&greeting=Hey
+
+Send the request. You should see a JSON response:
+
+{
+  "message": "Hey, Bob!"
+}
+
+
+#### Pushing Your First Change
 
 1. **Stage and commit**:
    ```bash
