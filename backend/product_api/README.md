@@ -8,11 +8,11 @@ This is a simple **in-memory Product API built using Django REST Framework (DRF)
 
 2. Retrieve All Products (GET /api/products/)
 
-3. Retrieve a Product by ID (GET /api/products/<id>/)
+3. Retrieve a Product by ID (GET /api/products/id/)
 
-4. Update a Product (PUT /api/products/<id>/)
+4. Update a Product (PUT /api/products/id/)
 
-5. Delete a Product (DELETE /api/products/<id>/)
+5. Delete a Product (DELETE /api/products/id/)
 ---
 # Prerequisites
 
@@ -37,20 +37,21 @@ venv\Scripts\activate  # Activate it (Windows)
 ```
 pip install django djangorestframework
 ```
-7. Create Django Project and App
+4. Create Django Project and App
 ```
 django-admin startproject productapi .  # Create a Django project
 python manage.py startapp products  # Create a Django app
 ```
-9. Run Migrations
+5. Run Migrations
 ```
 python manage.py migrate
 ```
-6.Start the server
+6. Start the server
 ```
 python manage.py runserver
 ```
-API Endpoints
+---
+# API Endpoints
 
 1. Create a Product
 
