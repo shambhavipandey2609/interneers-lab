@@ -23,7 +23,7 @@ Ensure you have Python 3 installed on your system.
 1. Clone the Repository
 ```
 git clone https://github.com/shambhavipandey2609/interneers-lab.git
-cd interneers-lab
+cd interneers-lab/backend
 ```
 2. Create a Project Directory and Set Up Virtual Environment
 ```
