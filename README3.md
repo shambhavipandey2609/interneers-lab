@@ -163,7 +163,7 @@ Create models using MongoEngine
 
 Implement repository & service layers
 
-Develop API endpoints using Flask
+Develop API endpoints
 
 Test API calls and analyze data in Compass
 
