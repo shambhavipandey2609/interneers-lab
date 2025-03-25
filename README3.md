@@ -1,6 +1,6 @@
-## Product Service with MongoDB and Docker ##
+# Product Service with MongoDB and Docker #
 
-# Setup and Installation #
+## Setup and Installation ##
 
 1️. Install Dependencies
   Ensure you have Docker and Python 3.x installed.
@@ -145,7 +145,7 @@ python manage.py runserver
 ```
 Then test with Postman or cURL:
 ```
-curl -X POST "http://127.0.0.1:8000/api/new-products" -H "Content-Type: application/json" -d '{"name": "Laptop", "price": 999.99}'
+curl -X POST "http://127.0.0.1:8000/api/new-products"
 ```
 View Data in MongoDB Compass
 
@@ -153,7 +153,7 @@ Connect to MongoDB Compass at mongodb://localhost:27017.
 
 Browse product_db to verify stored products.
 
-## Summary ##
+# Summary #
 
 Run MongoDB using Docker Compose
 
