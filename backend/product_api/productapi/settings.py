@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
-
+from mongoengine import connect, disconnect
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "rest_framework",
-    "products",
+    "product_api.products",
 ]
 
 MIDDLEWARE = [
@@ -71,16 +71,30 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'productapi.wsgi.application'
 
+# MONGO_URI = "mongodb+srv://product_database:product@atlascluster.metohzo.mongodb.net/productdb?retryWrites=true&w=majority"
+
+# connect(host=MONGO_URI)
+# print("MongoDB Connected Successfully!")
+
+connect(
+    db="productdb",
+    # host="mongodb://root:example@localhost:27017/productdb?authSource=admin"
+    host="mongodb://localhost:27017/productdb"
+    )
+
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'djongo',
+#         'NAME': 'productdb',
+#         'CLIENT': {
+#             'host': 'mongodb+srv://product_database:product@cluster.mongodb.net/productdb?retryWrites=true&w=majority'
+#         }
+#     }
+# }
 
 
 # Password validation
@@ -100,8 +114,13 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
-
+# disconnect(alias='default')
+# connect(
+#     db="productdb",
+#     username="product_database",
+#     password="product",
+#     host="product_database:product@atlascluster.metohzo.mongodb.net/productdb?retryWrites=true&w=majority"
+# )
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 

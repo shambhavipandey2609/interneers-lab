@@ -9,8 +9,10 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-
+import os
+from mongoengine import connect
 from pathlib import Path
+# from .database import connect
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +27,7 @@ SECRET_KEY = "setup key"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -37,7 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-     
+    "rest_framework"
 ]
 
 MIDDLEWARE = [
@@ -70,16 +72,28 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "django_app.wsgi.application"
 
+connect(
+    db="productdb",
+    # host="mongodb://root:example@localhost:27017/productdb?authSource=admin"
+    host="mongodb://localhost:27017/productdb")
 
+
+print("MongoDB Connected Successfully!")
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'djongo',
+#         'NAME': 'productdb',  # Your database name
+#         # 'ENFORCE_SCHEMA': False,
+#         'CLIENT': {
+#             'host': 'mongodb+srv://product_database:product@atlascluster.metohzo.mongodb.net/productdb?retryWrites=true&w=majority',
+#             'authSource': 'admin',
+#         }
+#     }
+# }
+
 
 
 # Password validation
