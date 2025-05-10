@@ -23,6 +23,6 @@ class Product(Document):
     meta = {'collection': 'product_db'}
     
 # Print properly formatted data    
-for item in Product.objects:
-    print(item.to_mongo().to_dict()) 
+# for item in Product.objects:
+#     print(item.to_mongo().to_dict()) 
 

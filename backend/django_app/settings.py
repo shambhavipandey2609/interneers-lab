@@ -39,12 +39,15 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "rest_framework"
+    "rest_framework",
+    "corsheaders",
+    "product_api.products",
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -71,29 +74,26 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "django_app.wsgi.application"
+CORS_ALLOW_ALL_ORIGINS = True
 
 connect(
     db="productdb",
     # host="mongodb://root:example@localhost:27017/productdb?authSource=admin"
-    host="mongodb://localhost:27017/productdb")
+    host="mongodb://localhost:27017/productdb",
+    alias="default",
+    )
 
 
 print("MongoDB Connected Successfully!")
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'djongo',
-#         'NAME': 'productdb',  # Your database name
-#         # 'ENFORCE_SCHEMA': False,
-#         'CLIENT': {
-#             'host': 'mongodb+srv://product_database:product@atlascluster.metohzo.mongodb.net/productdb?retryWrites=true&w=majority',
-#             'authSource': 'admin',
-#         }
-#     }
-# }
-
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',  # or another relational DB
+        'NAME': BASE_DIR / "db.sqlite3",
+    }
+}
 
 
 # Password validation
