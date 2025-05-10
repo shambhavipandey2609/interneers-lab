@@ -19,7 +19,7 @@ def Bye_name(request):
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    # path('admin/', admin.site.urls),
     path('hello/', hello_name), 
     path('Bye/',Bye_name),
     path("", include("product_api.productapi.urls")),

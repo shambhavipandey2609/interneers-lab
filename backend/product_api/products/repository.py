@@ -57,6 +57,7 @@ class ProductCategoryRepository:
 
     @staticmethod
     def get_category_by_id(category_id):
+        # without .first() it was returning a query set
         return ProductCategory.objects(id=category_id).first()
 
     @staticmethod

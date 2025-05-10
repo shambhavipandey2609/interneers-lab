@@ -120,7 +120,6 @@ class ProductView(APIView):
             })
 
         return Response(product_list, status=status.HTTP_200_OK)
-
     def post(self, request):
         data = request.data.copy()
 
@@ -165,6 +164,7 @@ class ProductView(APIView):
 
 class ProductCategoryListView(APIView):
     def get(self, request):
+        # list of documents in the collection
         categories = ProductCategory.objects.all()
         print(categories)
 
@@ -222,9 +222,9 @@ class ProductCategoryDetailView(APIView):
         return Response(category_data, status=status.HTTP_200_OK)
 
 
-    def put(self, request, category_title):
+    def put(self, request, category_id):
         data = request.data
-        category = ProductCategoryService.update_category_by_title(category_title, data["title"], data.get("description", ""))
+        category = ProductCategoryService.update_category(category_id, data["title"], data.get("description", ""))
         
         if not category:
             return Response({"error": "Category not found"}, status=status.HTTP_404_NOT_FOUND)

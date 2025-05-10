@@ -1,10 +1,11 @@
 from .repository import ProductRepository, ProductCategoryRepository, Product, ProductCategory
 
 class ProductService:
+    def __init__(self, repository):
+        self.repository = repository
     @staticmethod
-    def create_product(data):
-        return ProductRepository.create_product(data)
-
+    def create_product(product_data):
+        return ProductRepository.create_product(product_data)
     @staticmethod
     def get_all_products():
         return ProductRepository.get_all_products()
@@ -24,6 +25,8 @@ class ProductService:
 
 
 class ProductCategoryService:
+    def __init__(self, repo):
+        self.repo = repo
     @staticmethod
     def create_category(title, description):
         return ProductCategoryRepository.create_category(title, description)

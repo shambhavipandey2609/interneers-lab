@@ -79,7 +79,8 @@ WSGI_APPLICATION = 'productapi.wsgi.application'
 connect(
     db="productdb",
     # host="mongodb://root:example@localhost:27017/productdb?authSource=admin"
-    host="mongodb://localhost:27017/productdb"
+    host="mongodb://localhost:27017/productdb",
+    alias="default"  # required for MongoEngine to treat this as the default connection
     )
 
 
@@ -89,13 +90,19 @@ connect(
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'djongo',
-#         'NAME': 'productdb',
+#         'NAME': 'productdb',  # Your database name
+#         'ENFORCE_SCHEMA': False,
 #         'CLIENT': {
-#             'host': 'mongodb+srv://product_database:product@cluster.mongodb.net/productdb?retryWrites=true&w=majority'
-#         }
+#             'host': 'mongodb://localhost:27017',
+#         },
 #     }
 # }
-
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',  # or another relational DB
+        'NAME': BASE_DIR / "db.sqlite3",
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
